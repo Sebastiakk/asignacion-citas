@@ -1,1 +1,306 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/font/fonts.scss';
+@import './assets/styles/grid.scss';
+@import './assets/styles/colores.scss';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+* {
+  font-family: 'FSJoey-Medium';
+}
+.mat-drawer-container {
+  background-color: $sura-blanco !important;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 95%;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 95%;
+  }
+}
+
+.titulo {
+  font-size: 19px;
+  color: $sura-azul;
+  font-family: 'FSJoey-Bold';
+}
+
+b,
+strong {
+  font-family: 'FSJoey-Bold';
+}
+
+.hide {
+  display: none !important;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.center,
+.center-align {
+  text-align: center;
+}
+
+.left {
+  float: left !important;
+}
+
+.right {
+  float: right !important;
+}
+
+mat-radio-group mat-radio-button {
+  margin: 10px;
+}
+
+.barra-principal {
+  background-color: $sura-blanco;
+  height: 104px !important;
+  .nav-text {
+    color: $sura-azul;
+  }
+}
+.sub-barra {
+  background-color: $sura-verde;
+  height: 33px !important;
+  span {
+    color: $sura-blanco;
+  }
+}
+.texto-secundario {
+  color: $sura-gris;
+}
+
+p,
+b,
+span,
+a,
+strong,
+body,
+.mat-radio-label-content,
+input {
+  font-size: 17px !important;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px !important;
+  border-radius: 0 !important;
+  mat-expansion-panel-header {
+    background-color: $sura-gris2 !important;
+    height: 70px !important;
+    mat-panel-title {
+      color: $sura-azul !important;
+      font-size: 23px;
+      font-family: 'FSJoey-Bold';
+    }
+  }
+  .mat-expansion-panel-content {
+    .mat-expansion-panel-body {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 16px;
+    }
+  }
+}
+
+.tabla {
+  border: none;
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  th {
+    border: none;
+    color: $sura-azul;
+    font-size: 17px;
+    text-transform: uppercase;
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+  td {
+    border: none;
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+    font-size: 17px;
+  }
+}
+
+.tabla.striped {
+  tr {
+    border-bottom: none;
+  }
+  > tbody {
+    > tr {
+      &:nth-child(odd) {
+        background-color: rgba(242, 242, 242, 0.5);
+      }
+      > td {
+        border-radius: 0;
+      }
+    }
+  }
+}
+.tabla.highlight {
+  > tbody {
+    > tr {
+      -webkit-transition: background-color 0.25s ease;
+      transition: background-color 0.25s ease;
+      &:hover {
+        background-color: rgba(242, 242, 242, 0.5);
+      }
+    }
+  }
+}
+.tabla.centered {
+  thead {
+    tr {
+      th {
+        text-align: center;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+  .tabla {
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      position: relative;
+      td {
+        &:empty {
+          &:before {
+            content: '\00a0';
+          }
+        }
+        margin: 0;
+        vertical-align: top;
+        display: block;
+        min-height: 1.25em;
+        text-align: left;
+      }
+      th {
+        margin: 0;
+        vertical-align: top;
+        text-align: left;
+        display: block;
+        text-align: right;
+      }
+      thead {
+        display: block;
+        float: left;
+        border: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        tr {
+          display: block;
+          padding: 0 10px 0 0;
+          th {
+            &::before {
+              content: '\00a0';
+            }
+          }
+        }
+      }
+      tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap;
+        tr {
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      tr {
+        border-bottom: none;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+mat-calendar {
+  .mat-calendar-body-selected {
+    background-color: $sura-verde;
+    color: #fff;
+  }
+  .mat-calendar-next-button,
+  .mat-calendar-previous-button {
+    color: $sura-verde;
+  }
+}
+
+.swal2-cancel {
+  background-color: $sura-gris !important;
+  border-radius: 25px !important;
+  font-family: 'FSJoey-Medium' !important;
+  font-size: 16px !important;
+  color: $sura-blanco !important;
+  cursor: pointer !important;
+}
+.swal2-confirm {
+  background-color: $sura-verde !important;
+  border-radius: 25px !important;
+  font-family: 'FSJoey-Medium' !important;
+  font-size: 16px !important;
+  color: $sura-blanco !important;
+  cursor: pointer !important;
+}
+
+.swal2-container {
+  .swal2-title {
+    color: $sura-azul;
+    font-family: 'FSJoey-Medium' !important;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .swal2-popup {
+    width: 37em;
+    padding: 2.2em;
+  }
+  .swal2-footer {
+    color: $sura-azul;
+    font-size: 17px;
+  }
+}
+button.mat-raised-button {
+  border-radius: 25px !important;
+  font-family: 'FSJoey-Medium' !important;
+}
+
+button.mat-raised-button.mat-primary {
+  background-color: $sura-verde !important;
+  color: $sura-blanco !important;
+}

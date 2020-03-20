@@ -1,0 +1,141 @@
+<app-barra-navegacion>
+  <p class="titulo">Citas para medicina general</p>
+  <p class="texto-secundario">Inicio > <strong>Datos para citas</strong></p>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true" class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Datos personales
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="row">
+        <mat-form-field class="col s3" appearance="outline">
+          <mat-label>Expediente</mat-label>
+          <input name="expediente" matInput>
+        </mat-form-field>
+        <mat-form-field class="col s2" appearance="outline">
+          <mat-label>Ciudad de residencia</mat-label>
+          <input matInput name="ciudadResidencia">
+        </mat-form-field>
+        <mat-form-field class="col s3" appearance="outline">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput name="correo">
+        </mat-form-field>
+        <mat-form-field class="col s2" appearance="outline">
+          <mat-label>Número de celular</mat-label>
+          <input matInput name="celular">
+        </mat-form-field>
+        <mat-form-field class="col s2" appearance="outline">
+          <mat-label>Número de teléfono</mat-label>
+          <input matInput name="telefono">
+        </mat-form-field>
+        <mat-form-field class="col s6" appearance="outline">
+          <mat-label>Dirección de Domicilio</mat-label>
+          <input matInput name="direccion">
+        </mat-form-field>
+        <div class="col s12 m6" style="margin-top: 9px;">
+          <span style="margin-right: 5px;">¿Te encuentras en tu ciudad de residencia?</span>
+          <mat-radio-group>
+            <mat-radio-button value="si">Si</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Calendario de citas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <div class="col s12 m3">
+          <mat-form-field class="col s12" appearance="outline">
+            <mat-label>Tipo de servicio</mat-label>
+            <input matInput name="tipoServicio" [(ngModel)]="cita.tipoServicio" readonly>
+          </mat-form-field>
+          <mat-form-field class="col s12" appearance="outline">
+            <mat-label>Sede</mat-label>
+            <mat-select name="sede" [(ngModel)]="cita.sede">
+              <mat-option *ngFor="let item of sedes" [value]="item.id">
+                {{item.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col s12" appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input name="fecha" [(ngModel)]="cita.fechaReserva" matInput [matDatepicker]="picker" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker" name="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col s12 m9">
+          <div class="row" *ngIf="cita.fechaReserva">
+            <div class="col s12 m4">
+              <p class="titulo center">DISPONIBILIDAD</p>
+              <mat-calendar [(selected)]="cita.fechaReserva"></mat-calendar>
+            </div>
+            <div class="col s12 m8">
+              <table class="tabla striped">
+                <thead>
+                  <tr>
+                    <th>HORA</th>
+                    <th>PROFESIONAL</th>
+                    <th>ESPECIALIDAD</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let item of disponibilidad">
+                    <td><b>{{item.hora}}</b></td>
+                    <td>{{item.profesional}}</td>
+                    <td>{{item.especialidad}}</td>
+                    <td><button mat-raised-button color="primary" (click)="agendarCita()">Agendar cita</button> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="mat-elevation-z0" [expanded]="tab3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Citas agendadas
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div class="row">
+        <div class="col s12">
+          <div class="col s12 m4">
+            <mat-form-field class="col s12" appearance="outline">
+              <mat-label>Tipo de servicio</mat-label>
+              <input matInput name="tipoServicio" [(ngModel)]="cita.tipoServicio" readonly>
+            </mat-form-field>
+            <div class="col s12">
+              <mat-calendar [(selected)]="cita.fechaReserva"></mat-calendar>
+            </div>
+          </div>
+          <div class="col s12 m8 right-align">
+            <mat-form-field appearance="outline">
+              <mat-label>Sede</mat-label>
+              <mat-select name="sede" [(ngModel)]="cita.agendadas">
+                <mat-option *ngFor="let item of citasAgendadasSelec" [value]="item.id">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary"
+              style="position: relative;top: -5px;margin-left: 23px;">Reprogramar cita</button>
+          </div>
+        </div>
+        <div class="col s12"></div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</app-barra-navegacion>
